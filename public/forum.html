@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forum — StudyReck</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><img src="/logo.svg" alt="">Study<span class="dot">Reck</span></div>
+      <nav class="nav-links">
+        <a class="nav-link" href="/dashboard.html">Dashboard</a>
+        <a class="nav-link" href="/profile.html">Profile</a>
+        <a class="nav-link" href="/leaderboard.html">Leaderboard</a>
+        <a class="nav-link active" href="/forum.html">Forum</a>
+        <a class="nav-link" href="/messages.html">Messages<span class="badge" id="nav-unread-badge" style="display:none;"></span></a>
+        <a class="nav-link" href="/notes.html">Notes</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-chip" id="user-chip">
+          <div class="avatar">--</div>
+          <span id="user-chip-name">Loading…</span>
+        </div>
+        <button class="btn btn-secondary btn-block" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="page-header">
+        <div>
+          <span class="eyebrow">Ask, search, share</span>
+          <h1>Forum</h1>
+        </div>
+        <button class="btn btn-primary" id="new-post-btn">+ New post</button>
+      </div>
+
+      <div class="search-row">
+        <input type="text" id="search-input" placeholder="Search questions and study guides…">
+        <select id="tag-filter">
+          <option value="">All topics</option>
+        </select>
+      </div>
+
+      <!-- New post form, hidden until "+ New post" is clicked -->
+      <div class="card" id="new-post-card" style="display:none;">
+        <h3 style="font-size:1rem;">New post</h3>
+        <form id="new-post-form">
+          <div class="field">
+            <label for="post-title">Title</label>
+            <input id="post-title" type="text" required maxlength="200">
+          </div>
+          <div class="field-row">
+            <div class="field" style="flex:2;">
+              <label for="post-tag">Topic / subject</label>
+              <input id="post-tag" type="text" placeholder="e.g. Organic Chemistry">
+            </div>
+          </div>
+          <div class="field">
+            <label for="post-body">Details</label>
+            <textarea id="post-body" required placeholder="Ask your question or share your study guide…" style="min-height:120px;"></textarea>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button type="submit" class="btn btn-primary">Post</button>
+            <button type="button" class="btn btn-secondary" id="cancel-post-btn">Cancel</button>
+          </div>
+          <div class="error-text" id="new-post-error"></div>
+        </form>
+      </div>
+
+      <div id="posts-list"></div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/forum.js"></script>
+</body>
+</html>

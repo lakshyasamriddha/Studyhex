@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaderboard — StudyReck</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><img src="/logo.svg" alt="">Study<span class="dot">Reck</span></div>
+      <nav class="nav-links">
+        <a class="nav-link" href="/dashboard.html">Dashboard</a>
+        <a class="nav-link" href="/profile.html">Profile</a>
+        <a class="nav-link active" href="/leaderboard.html">Leaderboard</a>
+        <a class="nav-link" href="/forum.html">Forum</a>
+        <a class="nav-link" href="/messages.html">Messages<span class="badge" id="nav-unread-badge" style="display:none;"></span></a>
+        <a class="nav-link" href="/notes.html">Notes</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-chip" id="user-chip">
+          <div class="avatar">--</div>
+          <span id="user-chip-name">Loading…</span>
+        </div>
+        <button class="btn btn-secondary btn-block" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="page-header">
+        <div>
+          <span class="eyebrow">Ranked by focused time</span>
+          <h1>Leaderboard</h1>
+        </div>
+        <div class="range-tabs">
+          <div class="range-tab active" data-range="all">All time</div>
+          <div class="range-tab" data-range="month">This month</div>
+          <div class="range-tab" data-range="week">This week</div>
+        </div>
+      </div>
+
+      <div class="card" id="me-card" style="display:none;">
+        <div class="stat-card">
+          <span class="stat-label">Your rank</span>
+          <span class="stat-value" id="me-rank">—</span>
+        </div>
+      </div>
+
+      <div class="card" id="leaderboard-card">
+        <div id="leaderboard-list"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/leaderboard.js"></script>
+</body>
+</html>

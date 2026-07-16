@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyReck — Sign in</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="ring"><img src="/logo.svg" alt="StudyReck logo"></div>
+        <h1 style="font-size:1.3rem; margin-bottom:2px;">StudyReck</h1>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin:0;">A quiet place to track focused work.</p>
+      </div>
+
+      <div class="auth-tabs">
+        <div class="auth-tab active" data-tab="login">Sign in</div>
+        <div class="auth-tab" data-tab="register">Create account</div>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form id="login-form">
+        <div class="field">
+          <label for="login-id">Email or username</label>
+          <input id="login-id" type="text" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        <div class="error-text" id="login-error"></div>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form id="register-form" style="display:none;">
+        <div class="field">
+          <label for="reg-username">Username</label>
+          <input id="reg-username" type="text" minlength="3" required>
+        </div>
+        <div class="field">
+          <label for="reg-email">Email</label>
+          <input id="reg-email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="reg-password">Password</label>
+          <input id="reg-password" type="password" minlength="6" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Create account</button>
+        <div class="error-text" id="register-error"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

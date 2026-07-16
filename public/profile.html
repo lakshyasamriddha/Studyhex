@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile — StudyReck</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><img src="/logo.svg" alt="">Study<span class="dot">Reck</span></div>
+      <nav class="nav-links">
+        <a class="nav-link" href="/dashboard.html">Dashboard</a>
+        <a class="nav-link active" href="/profile.html">Profile</a>
+        <a class="nav-link" href="/leaderboard.html">Leaderboard</a>
+        <a class="nav-link" href="/forum.html">Forum</a>
+        <a class="nav-link" href="/messages.html">Messages<span class="badge" id="nav-unread-badge" style="display:none;"></span></a>
+        <a class="nav-link" href="/notes.html">Notes</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-chip" id="user-chip">
+          <div class="avatar">--</div>
+          <span id="user-chip-name">Loading…</span>
+        </div>
+        <button class="btn btn-secondary btn-block" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="page-header">
+        <div>
+          <span class="eyebrow">Your profile</span>
+          <h1 id="profile-heading">—</h1>
+        </div>
+      </div>
+
+      <form id="profile-form">
+        <div class="card">
+          <h3 style="font-size:1rem;">Basics</h3>
+          <div class="avatar-upload-row">
+            <button type="button" class="avatar-lg avatar-edit" id="avatar-preview" title="Click to change photo">--</button>
+            <input id="photo-input" type="file" accept="image/*" hidden>
+            <div>
+              <div style="font-size:0.85rem;">Tap your photo to change it</div>
+              <button type="button" class="btn-link" id="remove-photo-btn">Remove photo</button>
+              <div class="error-text" id="photo-error"></div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="full_name">Full name</label>
+            <input id="full_name" type="text">
+          </div>
+          <div class="field">
+            <label for="bio">Bio</label>
+            <textarea id="bio" placeholder="A short line about what you're studying or working toward."></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="profession">Profession</label>
+              <input id="profession" type="text">
+            </div>
+            <div class="field">
+              <label for="job_title">Job title</label>
+              <input id="job_title" type="text">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="class_name">Class / Grade</label>
+              <input id="class_name" type="text" placeholder="e.g. Class 12, Sophomore, B.Sc Year 2">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="company">Company / School</label>
+              <input id="company" type="text">
+            </div>
+            <div class="field">
+              <label for="work_hours">Typical hours</label>
+              <input id="work_hours" type="text" placeholder="e.g. Mon-Fri 9am-5pm">
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size:1rem;">Contact</h3>
+          <div class="field-row">
+            <div class="field">
+              <label for="contact_email">Public contact email</label>
+              <input id="contact_email" type="email">
+            </div>
+            <div class="field">
+              <label for="contact_phone">Phone (private, never shown publicly)</label>
+              <input id="contact_phone" type="text">
+            </div>
+          </div>
+          <div class="field">
+            <label for="visibility">Profile visibility</label>
+            <select id="visibility">
+              <option value="private">Private — only you</option>
+              <option value="public">Public — anyone with the link</option>
+              <option value="friends">Friends — accepted connections only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size:1rem;">Skills</h3>
+          <div class="field-row">
+            <div class="field" style="flex:1;">
+              <input id="skill-input" type="text" placeholder="Add a skill and press Enter">
+            </div>
+          </div>
+          <div class="tag-list" id="skills-list"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <span class="error-text" id="profile-error"></span>
+      </form>
+
+      <div class="card">
+        <h3 style="font-size:1rem;">Account</h3>
+        <form id="username-form" class="field-row">
+          <div class="field" style="flex:1;">
+            <label for="username-input">Username</label>
+            <input id="username-input" type="text" minlength="3" required>
+          </div>
+          <button type="submit" class="btn btn-secondary" style="align-self:flex-end;">Update username</button>
+        </form>
+        <span class="error-text" id="username-error"></span>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1rem;">Friends</h3>
+        <form id="add-friend-form" class="field-row">
+          <div class="field" style="flex:1;">
+            <label for="friend-username-input">Add a friend by username</label>
+            <input id="friend-username-input" type="text" placeholder="e.g. alex_92" required>
+          </div>
+          <button type="submit" class="btn btn-secondary" style="align-self:flex-end;">Send request</button>
+        </form>
+        <span class="error-text" id="add-friend-error"></span>
+
+        <div id="friend-requests-section" style="margin-top:16px; display:none;">
+          <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:8px;">Pending requests</div>
+          <div id="friend-requests-list"></div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:8px;">Your friends</div>
+          <div id="friends-list"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>

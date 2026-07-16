@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post — StudyReck Forum</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><img src="/logo.svg" alt="">Study<span class="dot">Reck</span></div>
+      <nav class="nav-links">
+        <a class="nav-link" href="/dashboard.html">Dashboard</a>
+        <a class="nav-link" href="/profile.html">Profile</a>
+        <a class="nav-link" href="/leaderboard.html">Leaderboard</a>
+        <a class="nav-link active" href="/forum.html">Forum</a>
+        <a class="nav-link" href="/messages.html">Messages<span class="badge" id="nav-unread-badge" style="display:none;"></span></a>
+        <a class="nav-link" href="/notes.html">Notes</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-chip" id="user-chip">
+          <div class="avatar">--</div>
+          <span id="user-chip-name">Loading…</span>
+        </div>
+        <button class="btn btn-secondary btn-block" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <a href="/forum.html" style="font-size:0.85rem; color:var(--text-muted);">&larr; Back to forum</a>
+
+      <div class="card" style="margin-top:16px;">
+        <div id="post-tag-holder"></div>
+        <h1 id="post-title" style="margin-top:8px;">—</h1>
+        <div class="forum-post-meta" id="post-meta"></div>
+        <p class="post-body" id="post-body-text"></p>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1rem;">Replies</h3>
+        <div id="replies-list"></div>
+
+        <form id="reply-form" style="margin-top:16px;">
+          <div class="field">
+            <label for="reply-body">Add a reply</label>
+            <textarea id="reply-body" required placeholder="Share an answer or a study tip…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Reply</button>
+          <span class="error-text" id="reply-error"></span>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/forum-post.js"></script>
+</body>
+</html>

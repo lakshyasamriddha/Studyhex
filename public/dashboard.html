@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — StudyReck</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><img src="/logo.svg" alt="">Study<span class="dot">Reck</span></div>
+      <nav class="nav-links">
+        <a class="nav-link active" href="/dashboard.html">Dashboard</a>
+        <a class="nav-link" href="/profile.html">Profile</a>
+        <a class="nav-link" href="/leaderboard.html">Leaderboard</a>
+        <a class="nav-link" href="/forum.html">Forum</a>
+        <a class="nav-link" href="/messages.html">Messages<span class="badge" id="nav-unread-badge" style="display:none;"></span></a>
+        <a class="nav-link" href="/notes.html">Notes</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-chip" id="user-chip">
+          <div class="avatar">--</div>
+          <span id="user-chip-name">Loading…</span>
+        </div>
+        <button class="btn btn-secondary btn-block" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="page-header">
+        <div>
+          <span class="eyebrow">Today</span>
+          <h1>Ready for a focus session?</h1>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card" style="display:flex; gap:24px; align-items:center;">
+          <div class="focus-ring">
+            <svg width="120" height="120">
+              <circle class="track" cx="60" cy="60" r="52"></circle>
+              <circle class="progress" id="ring-progress" cx="60" cy="60" r="52"
+                stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+            </svg>
+            <div class="center">
+              <div class="time mono" id="timer-display">25:00</div>
+              <div class="label" id="timer-label">Focus</div>
+            </div>
+          </div>
+          <div style="flex:1;">
+            <div class="field">
+              <label for="subject-select">Subject (optional)</label>
+              <select id="subject-select"><option value="">General study</option></select>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="btn btn-primary" id="timer-toggle">Start</button>
+              <button class="btn btn-secondary" id="timer-reset">Reset</button>
+            </div>
+            <p class="help-text">Finishing or resetting a session logs your time and updates the leaderboard.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size:1rem;">Your totals</h3>
+          <div class="grid grid-2" style="margin-top:10px;">
+            <div class="stat-card">
+              <span class="stat-label">Total focused time</span>
+              <span class="stat-value" id="stat-total">—</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Active days</span>
+              <span class="stat-value" id="stat-days">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="font-size:1rem; margin:0;">Subjects</h3>
+          <button class="btn btn-secondary" id="add-subject-btn" style="padding:6px 14px; font-size:0.82rem;">+ Add subject</button>
+        </div>
+        <div id="subjects-list" style="margin-top:14px;">
+          <div class="empty-state"><div class="glyph">◐</div>Add a subject to organize your sessions.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
