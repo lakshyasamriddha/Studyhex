@@ -1,8 +1,7 @@
 node_modules/
-.env
 *.db
-*.db-journal
-.DS_Store
-npm-debug.log*
 *.db-shm
 *.db-wal
+project.zip
+.env
+
