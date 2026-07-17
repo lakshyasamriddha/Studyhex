@@ -65,13 +65,13 @@ router.post('/login', async (req, res) => {
 
     if (!emailOrUsername || !password) {
       return res.status(400).json({ error: 'emailOrUsername and password are required' });
-    }
+    } 
 
     const user = await db.prepare(
       'SELECT * FROM users WHERE email = ? OR username = ?'
     ).get(emailOrUsername, emailOrUsername);
 
-    if (!user || !bcrypt.compareSync(password, user.password_hash)) {
+   if (!user || !bcrypt.compareSync(password, String(user.password_hash))) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     if (!user.is_active) {
