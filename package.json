@@ -4,7 +4,7 @@
   "description": "StudyReck - study tracker with login, profile, and leaderboard",
   "main": "server.js",
   "scripts": {
-    "start": "node --experimental-sqlite server.js"
+    "start": "node --experimental-sqlite server.js",
     "dev": "node --watch server.js"
   },
   "dependencies": {
