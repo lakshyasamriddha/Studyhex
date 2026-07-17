@@ -22,6 +22,11 @@ app.use(cookieParser());
 
 // API routes
 app.use('/api/auth', authRoutes);
+app.get('/api/debug/users', (req, res) => {
+  const db = require('./db/init');
+  const users = db.prepare('SELECT id, username, email FROM users').all();
+  res.json(users);
+});
 app.use('/api/profile', profileRoutes);
 app.use('/api/leaderboard', leaderboardRoutes);
 app.use('/api/study', studyRoutes);
