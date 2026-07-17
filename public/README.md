@@ -1,6 +1,6 @@
-# StudyReck → PWA (installable in seconds)
+# StudyHex → PWA (installable in seconds)
 
-This makes StudyReck installable straight from the browser — a real icon on
+This makes StudyHex installable straight from the browser — a real icon on
 your home screen or desktop, opens full-screen, no app store, no signing
 keys, no Android Studio.
 
